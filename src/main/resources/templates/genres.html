@@ -6,7 +6,9 @@
 </head>
 <body>
 <div th:each="el : ${genres}">
-    <h3 th:text="${el.name}"></h3>
+    <div>
+        <a th:href="'/genres/'+ ${el.id}" th:text="${el.name}"></a>
+    </div>
 </div>
 </body>
 </html>

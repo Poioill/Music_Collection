@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${singer.name}"></title>
+</head>
+<body>
+<div>
+    <h2 th:text="${singer.name}"></h2>
+    <div th:each="album : ${albums}">
+        <p th:text="${album.name}"></p>
+    </div>
+    <div>
+        <div class="images">
+            <div class="col" th:each="img : ${images}">
+                <img th:src="'/images/' + ${img.id}" alt="l"/>
+            </div>
+        </div>
+    </div>
+    <a th:href="'/update/' + ${singer.name}">Update</a>
+</div>
+</body>
+</html>
