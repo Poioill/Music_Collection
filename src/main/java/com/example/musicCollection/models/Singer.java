@@ -29,6 +29,9 @@ public class Singer {
     @ManyToMany(mappedBy = "singers")
     private Set<Album> albums = new HashSet<>();
 
+    @ManyToMany(mappedBy = "singers")
+    private Set<Song> songs = new HashSet<>();
+
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,
             mappedBy = "singer")
     private List<SingerImage> images = new ArrayList<>();

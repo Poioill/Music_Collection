@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/genre.css}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inria+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+    <title th:text="${genre.name}"></title>
+</head>
+<body>
+<div class="wrapper">
+    <div class="wrap _container">
+        <div th:include="base/navbar"></div>
+        <div class="main">
+            <div class="main__search">
+                <form>
+                    <button class="search__button" type="submit">
+                        <img src="/images/svg/search.svg" alt="">
+                    </button>
+                    <input class="search__input" type="text" placeholder="Search...">
+                </form>
+            </div>
+            <div class="main__content">
+                <div class="content__genre-title">
+                    <h3>
+                        <a href="/genres">Genres</a> > <span th:text="${genre.name}"></span></h3>
+                </div>
+                <div class="content__genre__wrapper">
+                    <div class="genre__picture">
+                        <div th:each="img : ${images}">
+                            <img th:src="'/images/' + ${img.id}" alt="">
+                        </div>
+                    </div>
+                    <div class="genre__music">
+                        <figure th:each="song : ${songs}">
+                            <figcaption>
+                                <div class="music__icon">
+                                    <img src="/images/svg/lineMusic.svg" alt="">
+                                </div>
+                                <div class="music__singer__pic">
+                                    <img th:src="'/images/' + ${song.album.images[0].id}" alt="pic">
+                                </div>
+                                <div class="music__singer__info">
+                                    <p th:text="${song.trackTitle}" class="singer__song_name"></p>
+                                    <p class="singer__name" th:each="singer : ${song.singers}">
+                                        <a th:href="'/' + ${singer.name}" th:text="${singer.name}"></a>
+                                    </p>
+                                </div>
+                            </figcaption>
+                            <audio controls src="/images/track/Billie_Eilish_-_bad_guy_63154737.mp3"></audio>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

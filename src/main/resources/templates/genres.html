@@ -2,12 +2,44 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>genres</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/genre.css}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inria+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Singer</title>
 </head>
 <body>
-<div th:each="el : ${genres}">
-    <div>
-        <a th:href="'/genres/'+ ${el.id}" th:text="${el.name}"></a>
+<div class="wrapper">
+    <div class="wrap _container">
+        <div th:include="base/navbar"></div>
+        <div class="main">
+            <div class="main__search">
+                <form action="/genres" method="get">
+                    <input type="submit" value=" " class="search__button">
+                        <img class="search__img" src="/images/svg/search.svg" alt="">
+                    </input>
+                    <input class="search__input" type="text" name="name" placeholder="Search...">
+                </form>
+            </div>
+            <div class="main__content">
+                <div class="content__title">
+                    <h2>Genres</h2>
+                </div>
+                <div class="content__box">
+                    <div th:each="genre : ${genres}" class="content__item">
+                        <a th:href="'/genres/'+ ${genre.id}" class="item-link">
+                            <div class="item__cover">
+                                <img th:src="'/images/' + ${genre.images[0].id}"  alt="">
+                            </div>
+                            <p th:text="${genre.name}" class="item__title">Pop</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
 </div>
 </body>

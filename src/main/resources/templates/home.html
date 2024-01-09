@@ -1,10 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inria+Sans:wght@300;400;700&display=swap" rel="stylesheet">
     <title>Home</title>
 </head>
 <body>
-<a href="/genres">Genres</a>
+
+<div class="wrapper">
+    <div class="wrap _container">
+        <div th:include="base/navbar"></div>
+        <div class="main">
+            <div class="main__wrapper">
+                <div class="main__content ">
+                    <div class="main__search">
+                        <form>
+                            <button class="search__button" type="submit"><img src="/images/svg/search.svg" alt=""></button>
+                            <input class="search__input" type="text" placeholder="Search...">
+                        </form>
+                    </div>
+                    <div class="main__title">
+                        Music collection.
+                    </div>
+                    <div class="main__explore">
+                        <p class="explore__title">Search more and explore discover</p>
+                        <div class="explore__items">
+                            <div class="item">
+                                <a href="">
+                                    <img src="/images/img/play1.png" alt="">
+                                    <p class="item__group">PLaylists</p>
+                                    <p class="item__name">Mix 90's</p>
+                                </a>
+                            </div>
+                            <div class="item">
+                                <a href="">
+                                    <img src="/images/img/play1.png" alt="">
+                                    <p class="item__group">PLaylists</p>
+                                    <p class="item__name">Mix 90's</p>
+                                </a>
+                            </div>
+                            <div class="item">
+                                <a href="">
+                                    <img src="/images/img/play1.png" alt="">
+                                    <p class="item__group">PLaylists</p>
+                                    <p class="item__name">Mix 90's</p>
+                                </a>
+                            </div>
+                            <div class="item">
+                                <a href="">
+                                    <img src="/images/img/play1.png" alt="">
+                                    <p class="item__group">PLaylists</p>
+                                    <p class="item__name">Mix 90's</p>
+                                </a>
+                            </div>
+                            <div class="explore__see-more">
+                                <a href=""><img src="/images/svg/arrow.svg" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="main__image _ibg">
+                    <img src="/images/img/homeBack.png" alt="cover">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
 </body>
 </html>

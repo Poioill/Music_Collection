@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Update page</title>
+</head>
+<body>
+<form method="post" th:object="${genre}" enctype="multipart/form-data">
+    <input th:field="${genre.id}" type="text" name="name"><br>
+    <input th:field="${genre.name}" type="text" name="name"><br>
+    <input type="file" id="file"  name="file" value="Choose a picture"><br>
+    <button type="submit">Save</button>
+</form>
+</body>
+</html>

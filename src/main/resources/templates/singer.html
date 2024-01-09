@@ -2,22 +2,81 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/singerStyle.css}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inria+Sans:wght@300;400;700&display=swap" rel="stylesheet">
     <title th:text="${singer.name}"></title>
 </head>
 <body>
-<div>
-    <h2 th:text="${singer.name}"></h2>
-    <div th:each="album : ${albums}">
-        <p th:text="${album.name}"></p>
-    </div>
-    <div>
-        <div class="images">
-            <div class="col" th:each="img : ${images}">
-                <img th:src="'/images/' + ${img.id}" alt="l"/>
+<div class="wrapper">
+    <div class="wrap _container">
+        <div th:include="base/navbar"></div>
+        <div class="main">
+            <div class="main__content_wrap">
+                <div class="main__picture">
+                    <div class="picture__album-info-1">
+                        <div class="album__animation">
+                            <div id="album-info"><img th:src="'/images/' + ${singer.images[0].id} " alt=""></div>
+                        </div>
+                    </div>
+                    <div class="picture__album-info-2">
+                        <div class="album-info album-info__" th:each="album : ${albums}" th:id="'album-info-' + ${album.id}">
+                            <div class="album__animation">
+                                <p class="album__info-name">ALBUM</p>
+                                <p class="album__info-title" th:text="${album.name}"></p>
+                                <p class="album__info-release" th:text="${album.releaseDate}"></p>
+                                <div class="album__info-songs">
+                                    <figure th:each="song : ${album.songs}">
+                                        <figcaption>
+                                            <div class="music__singer__pic">
+                                                <img th:src="'/images/' + ${album.images[0].id}" alt="">
+                                            </div>
+                                            <div class="music__singer__info">
+                                                <p class="singer__song_name" th:text="${song.trackTitle}"></p>
+                                            </div>
+                                        </figcaption>
+                                        <audio controls src="/images/track/Billie_Eilish_-_bad_guy_63154737.mp3"/>
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="main__info">
+                    <p th:text="${singer.name}" class="info__singer-name"></p>
+                    <div class="content__slider">
+                        <div class="slide_item">
+                            <figure th:each="song : ${songs}">
+                                <figcaption>
+                                    <div class="music__singer__pic">
+                                        <img th:src="'/images/' + ${song.album.images[0].id}" alt="">
+                                    </div>
+                                    <div class="music__singer__info">
+                                        <p th:text="${song.trackTitle}" class="singer__song_name"></p>
+                                    </div>
+                                </figcaption>
+                                <audio controls src="/images/track/Billie_Eilish_-_bad_guy_63154737.mp3"/>
+                            </figure>
+                        </div>
+                        <div class="slide_item album__box">
+                            <div th:each="album : ${albums}" class="album__card" th:onclick="'showAlbumInfo('+${album.id} +')'">
+                                <img th:src="'/images/' + ${album.images[0].id}" alt="">
+                                <p th:text="${album.name}" class="album__card__title"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <a th:href="'/update/' + ${singer.name}">Update</a>
 </div>
+</div>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script th:src="@{/js/slick.min.js}"></script>
+    <script th:src="@{/js/scripts.js}"></script>
 </body>
 </html>

@@ -2,6 +2,7 @@ package com.example.musicCollection.controllers;
 
 import com.example.musicCollection.models.Album;
 import com.example.musicCollection.models.Singer;
+import com.example.musicCollection.models.Song;
 import com.example.musicCollection.services.SingerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -24,23 +25,22 @@ public class SingerController {
     public String singer(@PathVariable String singerName, Model model) {
         Singer singer = singerService.findSingerByName(singerName);
         Set<Album> albums = singerService.getAllSingerAlbums(singer.getId());
+        Set<Song> songs = singerService.getAllSingerSongs(singer.getId());
         model.addAttribute("singer", singer);
         model.addAttribute("images", singer.getImages());
         model.addAttribute("albums", albums);
+        model.addAttribute("songs", songs);
         return "singer";
     }
 
-    @GetMapping("/update/{singerName}")
-    public String updateImage(@PathVariable String singerName, Model model) {
-        Singer singer = singerService.findSingerByName(singerName);
-        model.addAttribute("singer", singer);
-        return "singer-update";
+    @GetMapping("/addSinger")
+    public String addSinger(Model model) {
+        return "add/addSinger";
     }
 
-    @PostMapping("/update/{singerName}")
-    public String updateImage(@RequestParam("file") MultipartFile file, Singer singer) throws IOException {
-        System.out.println(singer);
+    @PostMapping("/addSinger")
+    public String addSinger(@RequestParam("file") MultipartFile file, Singer singer) throws IOException {
         singerService.saveImage(singer, file);
-        return "redirect:/{singerName}";
+        return "redirect:/";
     }
 }

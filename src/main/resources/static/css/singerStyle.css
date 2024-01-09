@@ -1,0 +1,219 @@
+body{
+    background: linear-gradient(270deg, #1B204F 87.78%, rgba(5, 11, 27, 0.94) 100%);
+}
+.main{
+    width: 1300px;
+}
+/* content */
+.main__content_wrap{
+    display: flex;
+    gap: 40px;
+}
+.main__info{
+    min-width: 0;
+    width: 100%;
+    margin: 60px 35px 30px 0;
+}
+.info__singer-name{
+    color: #FFF;
+    font-size: 60px;
+    font-weight: 600;
+}
+/* audi */
+.content__slider{
+    padding: 70px 0 0 0;
+    min-width: 0;
+    position: relative;
+    z-index: 1;
+    margin-top: 40px;
+}
+.slick-list{
+    overflow: hidden;
+}
+.slick-track{
+    display: flex;
+}
+.content__slider .slick-dots{
+    display: flex;
+    gap: 40px;
+    position: absolute;
+    top: 0;
+    z-index: 2;
+}
+.content__slider .slick-dots li{
+    list-style: none;
+    color: #FFF;
+    font-size: 22px;
+    padding: 0 0 10px 0;
+    cursor: pointer;
+}
+.content__slider .slick-dots .slick-active{
+    border-bottom: #84BDFF 3px solid;
+    transition-duration: 0.1s;
+}
+
+.slide_item figure{
+    display: flex;
+    justify-content: space-between;
+}
+.slide_item figure:not(:last-child){
+    margin-bottom: 30px;
+}
+figcaption{
+    display: flex;
+    align-items: center;
+}
+.music__singer__pic{
+    max-width: 65px;
+    max-height: 65px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 20px 0 0;
+}
+.music__singer__pic img {
+    max-width: 100%;
+}
+.singer__song_name{
+    color: #FFF;
+    font-size: 22px;
+    font-weight: 400;
+}
+.singer__name{
+    color: #E8E8E8;
+    font-size: 20px;
+    font-weight: 400;
+}
+.singer__name:hover{
+    text-decoration: underline;
+}
+.slide_item audio{
+    width: 430px;
+}
+audio::-webkit-media-controls-panel {
+    background-color:#1B204F;
+}
+audio::-webkit-media-controls-current-time-display {
+    color: #FFF;
+}
+audio::-webkit-media-controls-time-remaining-display{
+    color: #FFF;
+}
+audio::-webkit-media-controls-play-button{
+    background-color: #D7D7D7;
+    margin-right: 10px;
+    border-radius: 30px;
+}
+audio::-webkit-media-controls-timeline {
+    border-radius: 30px;
+    margin: 0 20px 0 20px;
+    background-color: #D7D7D7;
+}
+audio::-webkit-media-controls-mute-button{
+    background-color: #D7D7D7;
+    border-radius: 30px;
+}
+audio::-webkit-media-controls-volume-slider{
+    background-color: #D7D7D7;
+    border-radius: 30px;
+    padding: 15px;
+    margin-right: 5px;
+}
+/* album */
+.album__box{
+    display: flex;
+    gap: 30px;
+}
+.album__card{
+    border-radius: 8px;
+    width: 230px;
+    position: relative;
+    height: 230px;
+    overflow: hidden;
+    cursor: pointer;
+    filter: brightness(0.7);
+}
+.album__card img{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+.album__card:hover{
+    transition-duration: 0.3s;
+    filter: brightness(0.9);
+}
+.album__card__title{
+    position: absolute;
+    bottom: 0;
+    color: white;
+    font-weight: 600;
+    padding: 7px;
+}
+/* === */
+.main__picture{
+    width: 800px;
+}
+.picture__album-info-1, .album__animation{
+    animation-name: fadeInOut;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+}
+.album-info{
+    border-radius: 8px;
+    height: 100vh;
+    padding: 35px 45px;
+    border: 1px solid #141A44;
+    background: #1A204E;
+    box-shadow: 5px 5px 40px 10px rgba(3, 6, 29, 0.50) inset;
+}
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.album__info-name, .album__info-title{
+    color: #FFF;
+    font-size: 28px;
+    font-weight: 600;
+}
+.album__info-release{
+    font-size: 22px;
+    color: #FFF;
+}
+.album__info-songs{
+    margin-top: 35px;
+}
+.active{
+    display: block;
+}
+.album__info-title{
+    margin: 5px 0;
+}
+
+
+.album__info-songs audio{
+    width: 120px;
+}
+.album__info-songs figure{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.album__info-songs figure:not(:last-child){
+    margin-bottom: 20px;
+}
+.album__info-songs audio::-webkit-media-controls-current-time-display,
+.album__info-songs  audio::-webkit-media-controls-time-remaining-display,
+.album__info-songs audio::-webkit-media-controls-volume-slider,
+.album__info-songs audio::-webkit-media-controls-timeline{
+    display: none;
+}
+audio::-webkit-media-controls-play-button{
+    background-color: #D7D7D7;
+    margin-right: 10px;
+    border-radius: 30px;
+}

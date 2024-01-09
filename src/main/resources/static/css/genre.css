@@ -1,0 +1,182 @@
+/* search */
+.main__search form{
+    max-width: 780px;
+    display: flex;
+    gap: 10px;
+    padding-bottom: 13px;
+    border-bottom: #929292 1px solid;
+}
+.search__input{
+    color: #C2C2C2;
+    align-items: start;
+}
+.search__input::placeholder{
+    color: #FFF;
+    font-size: 22px;
+    font-weight: 300;
+}
+.search__button{
+    background-color: transparent;
+    border: none;
+}
+.search__img{
+    width: 30px !important
+}
+/* end search */
+body{
+    background: #121738;
+}
+.main{
+    width: 1300px;
+    margin-left: 50px;
+    margin-top: 25px;
+}
+/* content */
+.main__content{
+    margin-top: 30px;
+    margin-right: 45px;
+}
+.content__title{
+    color: #D7D7D7;
+    font-size: 40px;
+    font-weight: 700;
+}
+.content__box{
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 10px;
+}
+
+
+.item__cover{
+    width: 270px;
+    height: 270px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    border: #D7D7D7 1px solid;
+}
+.item__cover img{
+    padding: 8px;
+}
+
+
+.content__item{
+    margin-bottom: 30px;
+}
+.item__title{
+    color: #D7D7D7;
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 10px;
+}
+.item__cover:hover{
+    transition-duration: 0.5s;
+    border: #d7d7d799 1px solid;
+    padding: 9px;
+    opacity: 0.8;
+}
+.item-link:hover p{
+    text-decoration: underline;
+}
+/* genre-item */
+.content__genre__wrapper{
+    margin-top: 25px;
+    gap: 30px;
+    display: flex;
+    align-items: start;
+}
+.content__genre-title{
+    font-size: 24px;
+}
+.content__genre-title a{
+    text-decoration: underline;
+}
+.content__genre-title a:hover{
+    opacity: 0.8;
+    transition-duration: 0.3s;
+}
+.genre__picture{
+    max-width: 330px;
+    overflow: hidden;
+    border-radius: 10px 10px 0px 0px;
+}
+.genre__music{
+    border-radius: 20px;
+    background: #090D24;
+    padding: 30px;
+}
+/* audio */
+.genre__music{
+    width: 100%;
+}
+.genre__music figure{
+    display: flex;
+    justify-content: space-between;
+}
+.genre__music figure:not(:last-child){
+    margin-bottom: 30px;
+}
+figcaption{
+    display: flex;
+    align-items: center;
+}
+.music__singer__pic{
+    max-width: 65px;
+    max-height: 65px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 20px 0 25px;
+}
+.music__singer__pic img {
+    max-width: 100%;
+}
+.singer__song_name{
+    color: #FFF;
+    font-size: 22px;
+    font-weight: 400;
+}
+.singer__name{
+    color: #E8E8E8;
+    font-size: 20px;
+    font-weight: 400;
+}
+.singer__name:hover{
+    text-decoration: underline;
+}
+audio{
+    width: 510px;
+}
+audio::-webkit-media-controls-panel {
+    background-color:#090D24;
+}
+audio::-webkit-media-controls-current-time-display {
+    color: #FFF;
+}
+audio::-webkit-media-controls-time-remaining-display{
+    color: #FFF;
+}
+audio::-webkit-media-controls-play-button{
+    background-color: #D7D7D7;
+    margin-right: 10px;
+    border-radius: 30px;
+}
+audio::-webkit-media-controls-timeline {
+    border-radius: 30px;
+    margin: 0 20px 0 20px;
+    background-color: #D7D7D7;
+}
+audio::-webkit-media-controls-mute-button{
+    background-color: #D7D7D7;
+    border-radius: 30px;
+}
+audio::-webkit-media-controls-volume-slider{
+    background-color: #D7D7D7;
+    border-radius: 30px;
+    padding: 15px;
+    margin-right: 5px;
+}

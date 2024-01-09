@@ -3,16 +3,14 @@ package com.example.musicCollection.services;
 import com.example.musicCollection.models.Album;
 import com.example.musicCollection.models.Singer;
 import com.example.musicCollection.models.SingerImage;
+import com.example.musicCollection.models.Song;
 import com.example.musicCollection.repo.SingerRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.security.Principal;
-import java.util.Base64;
 import java.util.List;
 import java.util.Set;
 
@@ -25,7 +23,6 @@ public class SingerService {
     public List<Singer> findAllSingers() {
         return singerRepository.findAll();
     }
-
 
     //search by singer id
     public Singer getSingerById(Long id) {
@@ -40,6 +37,10 @@ public class SingerService {
     // to get all albums of a certain singer
     public Set<Album> getAllSingerAlbums(Long singerId) {
         return singerRepository.findAlbumBySingerId(singerId);
+    }
+
+    public Set<Song> getAllSingerSongs(Long singerId) {
+        return singerRepository.findSongBySingerId(singerId);
     }
 
     private SingerImage toImageEntity(MultipartFile file) throws IOException {
@@ -59,7 +60,6 @@ public class SingerService {
             img = toImageEntity(file);
             singer.addImageToSinger(img);
         }
-        singer.setId(singer.getId());
         singer.setName(singer.getName());
         log.info("Saving Singer: {}", singer.getName());
         singerRepository.save(singer);
