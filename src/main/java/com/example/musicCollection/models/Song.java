@@ -29,4 +29,7 @@ public class Song {
             joinColumns = @JoinColumn(name = "song_id"),
             inverseJoinColumns = @JoinColumn(name = "singer_id"))
     private Set<Singer> singers = new HashSet<>();
+
+    @ManyToMany(mappedBy = "songs")
+    private Set<Playlist> playlists = new HashSet<>();
 }

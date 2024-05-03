@@ -2,6 +2,7 @@ package com.example.musicCollection.services;
 
 import com.example.musicCollection.models.Album;
 import com.example.musicCollection.models.Genre;
+import com.example.musicCollection.models.Singer;
 import com.example.musicCollection.models.SingerImage;
 import com.example.musicCollection.repo.AlbumRepository;
 import lombok.RequiredArgsConstructor;
@@ -11,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Set;
 
 @Slf4j
 @Service
@@ -20,6 +22,10 @@ public class AlbumService {
 
     public Album getAlbumById(Long id) {
         return albumRepository.findById(id).orElseThrow(null);
+    }
+
+    public Set<Singer> findSingerByAlbumId(Long id) {
+        return albumRepository.findSingerByAlbumId(id);
     }
 
     public List<Album> getAllAlbums() {
@@ -47,5 +53,13 @@ public class AlbumService {
         album.setReleaseDate(album.getReleaseDate());
         log.info("Saving Album: {}", album.getName());
         albumRepository.save(album);
+    }
+
+    public List<Album> listAlbum(String name) {
+        if (name != null && albumRepository.findByNameContainingIgnoreCase(name).isEmpty()) {
+            return albumRepository.findAll();
+        } else if (name != null) {
+            return albumRepository.findByNameContainingIgnoreCase(name);
+        } else return albumRepository.findAll();
     }
 }

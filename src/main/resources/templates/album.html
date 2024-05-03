@@ -1,10 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/genre.css}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inria+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Singer</title>
 </head>
 <body>
+<div class="wrapper">
+    <div class="wrap _container">
+        <div th:include="base/navbar"></div>
+        <div class="main">
+            <div class="main__search">
+                <form action="/album" method="get">
+                    <input type="submit" value=" " class="search__button">
+                    <img class="search__img" src="/images/svg/search.svg" alt="">
+                    </input>
+                    <input class="search__input" type="text" name="name" placeholder="Search...">
+                </form>
+            </div>
+            <div class="main__content">
+                <div class="content__title">
+                    <h2>Albums</h2>
+                </div>
+                <div class="content__box">
+                    <div th:each="album : ${albums}" class="content__item">
+                        <a th:href="'/album/'+ ${album.id}" class="item-link">
+                            <div class="item__cover">
+                                <img th:src="'/images/' + ${album.images[0].id}"  alt="">
+                            </div>
+                            <p th:text="${album.name}" class="item__title"></p>
+                        </a>
+                    </div>
+                </div>
+            </div>
 
+        </div>
+    </div>
+</div>
 </body>
 </html>

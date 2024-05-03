@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" th:href="@{/css/base.css}">
+  <link rel="stylesheet" th:href="@{/css/genre.css}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inria+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+  <title>Singer</title>
+</head>
+<body>
+<div class="wrapper">
+  <div class="wrap _container">
+    <div th:include="base/navbar"></div>
+    <div class="main">
+      <div class="main__content" th:each="album : ${album}">
+        <div class="content__title">
+          <h2 th:text="${album.name}"></h2>
+          <br>
+          <p th:each="singer : ${singers}">
+            <a th:href="'/' + ${singer.name}" th:text="${singer.name}"></a>
+          </p>
+        </div>
+        <div class="content__box">
+          <div class="">
+              <div class="">
+                <img th:src="'/images/' + ${album.images[0].id}"  alt="">
+              </div>
+            <div th:each="song : ${album.songs}">
+              <p th:text="${song.trackTitle}"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</body>
+</html>

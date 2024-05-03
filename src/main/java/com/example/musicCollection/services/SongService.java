@@ -1,5 +1,6 @@
 package com.example.musicCollection.services;
 
+import com.example.musicCollection.models.Playlist;
 import com.example.musicCollection.models.Song;
 import com.example.musicCollection.repo.SongRepository;
 import lombok.RequiredArgsConstructor;
@@ -7,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 @Slf4j
@@ -21,4 +23,11 @@ public class SongService {
             return songRepository.findByTrackTitleContainingIgnoreCase(name);
         } else return songRepository.findAll();
     }
+
+//    public void addSong(Song song, Long playlistId) {
+//        Playlist playlist = new Playlist();
+//        playlist.setId(playlistId);
+//        song.setPlaylists(playlist);
+//        songRepository.save(song);
+//    }
 }

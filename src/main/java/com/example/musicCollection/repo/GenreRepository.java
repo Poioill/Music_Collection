@@ -2,7 +2,6 @@ package com.example.musicCollection.repo;
 
 import com.example.musicCollection.models.Genre;
 import com.example.musicCollection.models.Singer;
-import com.example.musicCollection.models.Song;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
