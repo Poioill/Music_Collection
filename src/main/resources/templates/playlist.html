@@ -20,17 +20,16 @@
           <h2>Playlists</h2>
         </div>
         <div class="content__box">
-          // мои плейлисты
+
           <form action="/addPlaylist" method="post" enctype="multipart/form-data">
             <input type="text" name="name" placeholder="Name of the playlist"><br>
             <input type="file" id="file"  name="file" value="Choose a picture"><br>
             <button type="submit">Add Playlist</button>
           </form>
-
-          <form th:object="${playlist}" action="/addPlaylist" method="post">
+          <form th:object="${playlist}" action="/addSongToPlaylist" method="post">
             <div>
               <span>Choose a playlist: </span>
-              <select name="select" size="1">
+              <select name="selectPlaylist" size="1">
                 <option disabled selected value="">--</option>
                 <div th:each="playlist : ${playlists}">
                   <option th:value="${playlist.id}" th:text="${playlist.name}"></option>
@@ -38,20 +37,23 @@
               </select>
             </div>
             <div>
-              <span>Name of sightseeing: </span>
-              <input name="titlePlace" type="text" placeholder="...">
+              <span>Choose a song: </span>
+              <select name="selectSong" size="1">
+                <option disabled selected value="">--</option>
+                <div th:each="song : ${songs}">
+                  <option th:value="${song.id}" th:text="${song.trackTitle}"></option>
+                </div>
+              </select>
             </div>
-            <div class="form-item">
-              <span>Description: </span>
-              <textarea name="historyPlace" placeholder="...history of this sightseeing..."></textarea>
-            </div>
-            <button type="submit">Add sightseeing</button><br>
+            <button type="submit">Add Song</button><br>
           </form>
 
-          // все плейлисты
+          <br><br>
           <div th:each="playlist : ${playlists}">
-            <p th:text="${playlist.name}"></p>
-            <img th:src="'/images/' + ${playlist.images[0].id}"  alt="">
+            <a th:href="'/playlist/'+ ${playlist.id}" class="item-link">
+              <p th:text="${playlist.name}"></p>
+              <img th:src="'/images/' + ${playlist.images[0].id}"  alt="">
+            </a>
           </div>
         </div>
       </div>

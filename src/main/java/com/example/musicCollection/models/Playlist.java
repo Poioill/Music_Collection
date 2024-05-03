@@ -30,6 +30,11 @@ public class Playlist {
             mappedBy = "playlist")
     private List<SingerImage> images = new ArrayList<>();
 
+    public void addSong(Song song) {
+        songs.add(song);
+        song.getPlaylists().add(this);
+    }
+
     public void addImageToPlaylist(SingerImage img){
         img.setPlaylist(this);
         images.add(img);

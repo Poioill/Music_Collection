@@ -24,10 +24,7 @@ public class SongService {
         } else return songRepository.findAll();
     }
 
-//    public void addSong(Song song, Long playlistId) {
-//        Playlist playlist = new Playlist();
-//        playlist.setId(playlistId);
-//        song.setPlaylists(playlist);
-//        songRepository.save(song);
-//    }
+    public List<Song> getAllSongs() {
+        return songRepository.findAll();
+    }
 }
