@@ -17,9 +17,13 @@
     <div class="main">
       <div class="main__content">
         <div class="content__title">
-          <h2 th:text="${playlist.name}"></h2>
+          <h2 th:text="${playl.name}"></h2>
         </div>
         <div class="content__box">
+          <div th:each="song : ${songs}">
+            <p th:text="${song.trackTitle}"></p>
+            <p th:text="${song.id}"></p>
+          </div>
         </div>
       </div>
 

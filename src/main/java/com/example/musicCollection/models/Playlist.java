@@ -20,7 +20,7 @@ public class Playlist {
     private Long id;
     private String name;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "playlist_song",
             joinColumns = @JoinColumn(name = "playlist_id"),
             inverseJoinColumns = @JoinColumn(name = "song_id"))
@@ -28,14 +28,9 @@ public class Playlist {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,
             mappedBy = "playlist")
-    private List<SingerImage> images = new ArrayList<>();
+    private List<PlaylistImage> images = new ArrayList<>();
 
-    public void addSong(Song song) {
-        songs.add(song);
-        song.getPlaylists().add(this);
-    }
-
-    public void addImageToPlaylist(SingerImage img){
+    public void addImageToPlaylist(PlaylistImage img){
         img.setPlaylist(this);
         images.add(img);
     }

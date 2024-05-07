@@ -30,6 +30,6 @@ public class Song {
             inverseJoinColumns = @JoinColumn(name = "singer_id"))
     private Set<Singer> singers = new HashSet<>();
 
-    @ManyToMany(mappedBy = "songs")
+    @ManyToMany(mappedBy = "songs", fetch = FetchType.LAZY)
     private Set<Playlist> playlists = new HashSet<>();
 }

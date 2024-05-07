@@ -1,7 +1,10 @@
 package com.example.musicCollection.controllers;
 
+import com.example.musicCollection.models.Playlist;
+import com.example.musicCollection.models.PlaylistImage;
 import com.example.musicCollection.models.SingerImage;
 import com.example.musicCollection.repo.ImageRepo;
+import com.example.musicCollection.repo.PlaylistImageRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.MediaType;
@@ -14,12 +17,12 @@ import java.io.ByteArrayInputStream;
 
 @RestController
 @RequiredArgsConstructor
-public class ImageController {
-    private final ImageRepo imageRepo;
+public class PlaylistImageController {
+    private final PlaylistImageRepo imageRepo;
 
-    @GetMapping("/images/{id}")
+    @GetMapping("/playlistImages/{id}")
     private ResponseEntity<?> getImageById(@PathVariable Long id){
-        SingerImage img = imageRepo.findById(id).orElse(null);
+        PlaylistImage img = imageRepo.findById(id).orElse(null);
         return ResponseEntity.ok()
                 .header("fileName", img.getOriginalFileName())
                 .contentType(MediaType.valueOf(img.getContentType()))

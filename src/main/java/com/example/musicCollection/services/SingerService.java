@@ -24,17 +24,14 @@ public class SingerService {
         return singerRepository.findAll();
     }
 
-    //search by singer id
     public Singer getSingerById(Long id) {
         return singerRepository.findById(id).orElseThrow(null);
     }
 
-    // search by singer name
     public Singer findSingerByName(String name) {
         return singerRepository.findSingerByName(name);
     }
 
-    // to get all albums of a certain singer
     public Set<Album> getAllSingerAlbums(Long singerId) {
         return singerRepository.findAlbumBySingerId(singerId);
     }

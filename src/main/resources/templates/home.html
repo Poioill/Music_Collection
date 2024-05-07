@@ -30,36 +30,12 @@
                     <div class="main__explore">
                         <p class="explore__title">Search more and explore discover</p>
                         <div class="explore__items">
-                            <div class="item">
-                                <a href="">
-                                    <img src="/images/img/play1.png" alt="">
+                            <div th:each="playlist : ${playlist}" class="item">
+                                <a th:href="'/playlist/'+ ${playlist.id}">
+                                    <img th:src="'/playlistImages/' + ${playlist.images[0].id}" alt="">
                                     <p class="item__group">PLaylists</p>
-                                    <p class="item__name">Mix 90's</p>
+                                    <p th:text="${playlist.name}" class="item__name"></p>
                                 </a>
-                            </div>
-                            <div class="item">
-                                <a href="">
-                                    <img src="/images/img/play1.png" alt="">
-                                    <p class="item__group">PLaylists</p>
-                                    <p class="item__name">Mix 90's</p>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="">
-                                    <img src="/images/img/play1.png" alt="">
-                                    <p class="item__group">PLaylists</p>
-                                    <p class="item__name">Mix 90's</p>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="">
-                                    <img src="/images/img/play1.png" alt="">
-                                    <p class="item__group">PLaylists</p>
-                                    <p class="item__name">Mix 90's</p>
-                                </a>
-                            </div>
-                            <div class="explore__see-more">
-                                <a href=""><img src="/images/svg/arrow.svg" alt=""></a>
                             </div>
                         </div>
                     </div>

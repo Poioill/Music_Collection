@@ -4,6 +4,7 @@ import com.example.musicCollection.models.Album;
 import com.example.musicCollection.models.Genre;
 import com.example.musicCollection.models.Singer;
 import com.example.musicCollection.services.AlbumService;
+import com.example.musicCollection.services.PlaylistService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +21,7 @@ import java.util.Set;
 @RequiredArgsConstructor
 public class AlbumController {
     private final AlbumService albumService;
+    private final PlaylistService playlistService;
 
     @GetMapping("/addAlbum")
     public String addAlbum(Model model) {
@@ -35,6 +37,7 @@ public class AlbumController {
     @GetMapping("/album")
     public String album(@RequestParam(name = "name", required = false) String name, Model model){
         model.addAttribute("albums", albumService.listAlbum(name));
+        model.addAttribute("playlist", playlistService.getAllPlaylists());
         return "album";
     }
 
@@ -45,6 +48,7 @@ public class AlbumController {
         model.addAttribute("images", album.getImages());
         model.addAttribute("album", album);
         model.addAttribute("singers", singers);
+        model.addAttribute("playlist", playlistService.getAllPlaylists());
         return "/add/albumItem";
     }
 }

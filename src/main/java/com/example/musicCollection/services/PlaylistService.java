@@ -1,7 +1,7 @@
 package com.example.musicCollection.services;
 
 import com.example.musicCollection.models.Playlist;
-import com.example.musicCollection.models.SingerImage;
+import com.example.musicCollection.models.PlaylistImage;
 import com.example.musicCollection.models.Song;
 import com.example.musicCollection.repo.PlaylistRepository;
 import com.example.musicCollection.repo.SongRepository;
@@ -21,8 +21,8 @@ public class PlaylistService {
     private final PlaylistRepository playlistRepository;
     private final SongRepository songRepository;
 
-    public SingerImage toImageEntity(MultipartFile file) throws IOException {
-        SingerImage img = new SingerImage();
+    public PlaylistImage toImageEntity(MultipartFile file) throws IOException {
+        PlaylistImage img = new PlaylistImage();
         img.setName(file.getName());
         img.setOriginalFileName(file.getOriginalFilename());
         img.setContentType(file.getContentType());
@@ -33,7 +33,7 @@ public class PlaylistService {
 
     public void saveImagePlaylist(Playlist playlist,
                                   MultipartFile file) throws IOException {
-        SingerImage img;
+        PlaylistImage img;
         if (file.getSize() != 0){
             img = toImageEntity(file);
             playlist.addImageToPlaylist(img);
@@ -47,9 +47,12 @@ public class PlaylistService {
         return playlistRepository.findById(id).orElseThrow(null);
     }
 
-    public List<Playlist> getAllPlaylist(){
-        return playlistRepository.findAll();
+    public Set<Song> getSongByPlaylistId(Long playlistId){
+        return playlistRepository.findSongByPlaylistId(playlistId);
     }
+
+    public List<Playlist> getAllPlaylists() {return playlistRepository.findAll();}
+
     public List<Playlist> listPlaylist(String name) {
         if (name != null && playlistRepository.findByNameContainingIgnoreCase(name).isEmpty()) {
             return playlistRepository.findAll();
@@ -59,13 +62,15 @@ public class PlaylistService {
     }
 
     public void saveSongToPlaylist(Long playlistId, Long songId) {
-        Song song = songRepository.findById(songId).orElse(null);
-        Playlist playlist = playlistRepository.findById(playlistId).orElse(null);
+        Playlist playlist = playlistRepository.findById(playlistId).orElseThrow();
 
-        if (song != null && playlist != null) {
-            playlist.addSong(song);
-            playlistRepository.save(playlist);
-        }
+        Song song = new Song();
+        song.setId(songId);
+
+        playlist.getSongs().add(song);
+        song.getPlaylists().add(playlist);
+
+        playlistRepository.save(playlist);
     }
 
 }

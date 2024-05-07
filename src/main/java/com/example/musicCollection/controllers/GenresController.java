@@ -3,6 +3,7 @@ package com.example.musicCollection.controllers;
 import com.example.musicCollection.models.Genre;
 import com.example.musicCollection.models.Singer;
 import com.example.musicCollection.services.GenreService;
+import com.example.musicCollection.services.PlaylistService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,10 +20,12 @@ import java.util.Set;
 @RequiredArgsConstructor
 public class GenresController {
     private final GenreService genreService;
+    private final PlaylistService playlistService;
 
     @GetMapping("/genres")
     public String genres(@RequestParam(name = "name", required = false) String name, Model model){
         model.addAttribute("genres", genreService.listGenre(name));
+        model.addAttribute("playlist", playlistService.getAllPlaylists());
         return "genres";
     }
 
@@ -33,6 +36,7 @@ public class GenresController {
         model.addAttribute("genre", genre);
         model.addAttribute("images", genre.getImages());
         model.addAttribute("songs", genre.getSongs());
+        model.addAttribute("playlist", playlistService.getAllPlaylists());
         model.addAttribute("singers", singers);
         return "genreSingers";
     }

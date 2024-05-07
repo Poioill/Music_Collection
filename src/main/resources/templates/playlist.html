@@ -20,13 +20,19 @@
           <h2>Playlists</h2>
         </div>
         <div class="content__box">
+          <form action="/playlist" method="get">
+            <input type="submit" value=" " class="search__button">
+            <img class="search__img" src="/images/svg/search.svg" alt="">
+            </input>
+            <input class="search__input" type="text" name="name" placeholder="Search...">
+          </form>
 
           <form action="/addPlaylist" method="post" enctype="multipart/form-data">
             <input type="text" name="name" placeholder="Name of the playlist"><br>
             <input type="file" id="file"  name="file" value="Choose a picture"><br>
             <button type="submit">Add Playlist</button>
           </form>
-          <form th:object="${playlist}" action="/addSongToPlaylist" method="post">
+          <form action="/addSongToPlaylist" method="post">
             <div>
               <span>Choose a playlist: </span>
               <select name="selectPlaylist" size="1">
@@ -49,10 +55,12 @@
           </form>
 
           <br><br>
+          <br><br>
+          <br><br>
           <div th:each="playlist : ${playlists}">
             <a th:href="'/playlist/'+ ${playlist.id}" class="item-link">
               <p th:text="${playlist.name}"></p>
-              <img th:src="'/images/' + ${playlist.images[0].id}"  alt="">
+              <img th:src="'/playlistImages/' + ${playlist.images[0].id}"  alt="">
             </a>
           </div>
         </div>

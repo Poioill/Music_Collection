@@ -14,28 +14,12 @@
             </nav>
             <div class="header__more">
                 <span class="more__text">Try this</span>
-                <div class="more__link-wrap">
-                    <a href="">
+                <div th:each="playlist : ${playlist}" class="more__link-wrap">
+                    <a th:href="'/playlist/'+ ${playlist.id}">
                         <div class="link__pic">
-                            <img src="/images/img/play1.png" alt="">
+                            <img th:src="'/playlistImages/' + ${playlist.images[0].id}" alt="">
                         </div>
-                        <p class="link__text">Mix 90's</p>
-                    </a>
-                </div>
-                <div class="more__link-wrap">
-                    <a href="">
-                        <div class="link__pic">
-                            <img src="/images/img/play1.png" alt="">
-                        </div>
-                        <p class="link__text">Mix 90's</p>
-                    </a>
-                </div>
-                <div class="more__link-wrap">
-                    <a href="">
-                        <div class="link__pic">
-                            <img src="/images/img/play1.png" alt="">
-                        </div>
-                        <p class="link__text">Mix 90's</p>
+                        <p th:text="${playlist.name}" class="link__text"></p>
                     </a>
                 </div>
             </div>
